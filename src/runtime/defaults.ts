@@ -1,4 +1,4 @@
-import { AuthModuleConfig, AuthHandlerConfig } from "./types";
+import { AuthModuleConfig, AuthHandlerConfig } from "../types";
 
 export const moduleDefaults: AuthModuleConfig = {
     global: false,

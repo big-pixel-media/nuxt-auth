@@ -4,7 +4,7 @@ import { defu } from "defu";
 import { getProviders, getSession, signIn, signOut, callback } from "../handlers";
 import { AuthHandlerConfig } from "../types";
 
-import { handlerDefaults } from "../../defaults";
+import { handlerDefaults } from "../defaults";
 
 export const AuthHandler = (config: AuthHandlerConfig) => {
     const handlerConfig = defu(config, handlerDefaults);

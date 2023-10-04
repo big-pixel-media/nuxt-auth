@@ -1,7 +1,7 @@
 import { createResolver, defineNuxtModule, addImportsDir, addPlugin, addTemplate } from "@nuxt/kit";
 import { defu } from "defu";
 
-import { moduleDefaults } from "./defaults";
+import { moduleDefaults } from "./runtime/defaults";
 
 export default defineNuxtModule({
     meta: {
