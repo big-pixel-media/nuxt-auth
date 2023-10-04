@@ -12,8 +12,8 @@
                         'text-red-500': status == 'unauthenticated',
                         'text-green-600': status == 'authenticated',
                     }"
-                    >{{ status }}</span
-                >
+                    >{{ status }}
+                </span>
             </div>
             <div class="flex flex-col items-center justify-center space-y-4">
                 <div class="flex gap-4">

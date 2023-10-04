@@ -30,7 +30,7 @@ const credentials = async (
 
     setCookie(event, options.cookie.name, token, {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "lax",
     });
 
     return { action: "none" };

@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center justify-center space-y-4">
-        <form @submit.prevent="submit()" autocomplete="off">
+        <form autocomplete="off" @submit.prevent="submit()">
             <div class="flex gap-4">
                 <div>
                     <input type="text" v-model="username" />
@@ -20,6 +20,7 @@
             <div>test</div>
         </div>
     </div>
+    <button type="button" @click="signIn('sorare')" class="btn">Sorare</button>
 </template>
 <script setup lang="ts">
 import { ref, useAuth } from "#imports";

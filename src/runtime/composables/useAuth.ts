@@ -18,7 +18,7 @@ const getRequestCookies = async (nuxt: NuxtApp): Promise<{ cookie: string } | {}
 };
 
 export const useAuth = () => {
-    const status = useState<AuthStatus>("auth-status", () => "unauthenticated");
+    const status = useState<AuthStatus | undefined>("auth-status", () => undefined);
 
     // getSession makes a call to the backend to retrieve the session,
     // passing along the auth cookie
