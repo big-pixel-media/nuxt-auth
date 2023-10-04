@@ -17,7 +17,7 @@ const getRequestCookies = async (nuxt: NuxtApp): Promise<{ cookie: string } | {}
     return {};
 };
 
-export default function () {
+export const useAuth = () => {
     const status = useState<AuthStatus>("auth-status", () => "unauthenticated");
 
     // getSession makes a call to the backend to retrieve the session,
@@ -57,7 +57,7 @@ export default function () {
                 body: JSON.stringify(options || {}),
             });
 
-            if (result.action == "redirect") {
+            if (result && result.action == "redirect") {
                 console.log(`🔒 Redirecting to '${result.url}'`);
                 window.location.href = result.url;
                 return;
@@ -117,4 +117,4 @@ export default function () {
     };
 
     return { status, signIn, signOut, getSession, getProviders };
-}
+};

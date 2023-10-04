@@ -8,6 +8,9 @@
         "generate": "nuxi generate"
     },
     "devDependencies": {
-        "nuxt": "latest"
+        "nuxt": "latest",
+        "autoprefixer": "^10.4.16",
+        "postcss": "^8.4.31",
+        "tailwindcss": "^3.3.3"
     }
 }

@@ -41,7 +41,7 @@ export const OAuthProvider = (providerOptions: OAuthOptions): Provider => {
 
         setCookie(event, `${options.cookie.name}.return-url`, returnUrl || "/", {
             httpOnly: true,
-            sameSite: "lax",
+            sameSite: "strict",
         });
 
         return {
@@ -82,7 +82,7 @@ export const OAuthProvider = (providerOptions: OAuthOptions): Provider => {
 
         setCookie(event, options.cookie.name, token, {
             httpOnly: true,
-            sameSite: "lax",
+            sameSite: "strict",
             maxAge: expireAt,
         });
 

@@ -1,4 +1,4 @@
-import { createResolver, defineNuxtModule, addImportsDir, addPlugin, addTemplate } from "@nuxt/kit";
+import { createResolver, defineNuxtModule, addImports, addPlugin, addTemplate, addRouteMiddleware } from "@nuxt/kit";
 import { defu } from "defu";
 
 import { moduleDefaults } from "./runtime/defaults";
@@ -9,8 +9,6 @@ export default defineNuxtModule({
         configKey: "auth",
     },
     async setup(options, nuxt) {
-        console.log(`🔒 Auth module setup`);
-
         const moduleOptions = defu(options, moduleDefaults);
 
         nuxt.options.runtimeConfig.auth = moduleOptions;
@@ -21,9 +19,12 @@ export default defineNuxtModule({
 
         const { resolve } = createResolver(import.meta.url);
 
-        addImportsDir(resolve("./runtime/composables"));
-
-        addPlugin(resolve("./runtime/plugin"));
+        addImports([
+            {
+                name: "useAuth",
+                from: resolve(`./runtime/composables/useAuth`),
+            },
+        ]);
 
         addTemplate({
             filename: "types/auth.d.ts",
@@ -53,5 +54,12 @@ export default defineNuxtModule({
                 path: resolve(nuxt.options.buildDir, "types/auth.d.ts"),
             });
         });
+
+        addRouteMiddleware({
+            name: "auth",
+            path: resolve("./runtime/middleware/auth"),
+        });
+
+        addPlugin(resolve("./runtime/plugin"));
     },
 });

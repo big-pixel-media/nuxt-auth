@@ -1,4 +1,4 @@
-import { H3Event, EventHandlerRequest, getCookie } from "h3";
+import { H3Event, EventHandlerRequest, getCookie, createError } from "h3";
 import { jwtDecrypt } from "jose";
 import { getDerivedEncryptionKey } from "../utils";
 import { AuthHandlerConfig, Session } from "../../types";

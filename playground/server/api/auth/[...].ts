@@ -7,7 +7,7 @@ const options = {
     providers: [
         CredentialsProvider({
             async authorize(credentials) {
-                const res = await fetch(`${process.env.API_BASE_URL}/auth/sign-in`, {
+                /*const res = await fetch(`${process.env.API_BASE_URL}/auth/sign-in`, {
                     method: "POST",
                     body: JSON.stringify({
                         identifier: credentials.username,
@@ -19,6 +19,10 @@ const options = {
 
                 if (user) {
                     return user;
+                }*/
+
+                if (credentials.username == "test") {
+                    return { firstname: "test", lastname: "test", userid: 123, email: "test@test.com" };
                 }
 
                 return null;

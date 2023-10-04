@@ -1,17 +1,20 @@
-import { H3Event, EventHandlerRequest } from "h3";
+import { H3Event, EventHandlerRequest, readBody, createError, setCookie } from "h3";
 import { AuthHandlerConfig, CredentialsProvider, SignInRequest } from "../../types";
 import { encryptToken } from "../token";
 
 const credentials = async (
     event: H3Event<EventHandlerRequest>,
     options: AuthHandlerConfig,
-    providerConfig: CredentialsProvider
+    provider: CredentialsProvider
 ) => {
     const body = (await readBody(event)) as SignInRequest;
 
-    const user = await providerConfig.authorize(body);
+    const user = await provider.authorize(body);
     if (!user) {
-        return;
+        throw createError({
+            statusCode: 401,
+            statusMessage: `Unauthorized`,
+        });
     }
 
     if (!options.secret) {
@@ -27,10 +30,10 @@ const credentials = async (
 
     setCookie(event, options.cookie.name, token, {
         httpOnly: true,
-        sameSite: "lax",
+        sameSite: "strict",
     });
 
-    return {};
+    return { action: "none" };
 };
 
 export default async (
