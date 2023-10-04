@@ -1,4 +1,4 @@
-import { createResolver, defineNuxtModule, addImportsDir, addPlugin, addTemplate } from "nuxt/kit";
+import { createResolver, defineNuxtModule, addImportsDir, addPlugin, addTemplate } from "@nuxt/kit";
 import { defu } from "defu";
 
 import { moduleDefaults } from "./defaults";
