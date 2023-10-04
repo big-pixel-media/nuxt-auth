@@ -1,4 +1,5 @@
-import { RedirectEvent } from "../../types";
+import { defineNuxtRouteMiddleware, useRouter, useNuxtApp, navigateTo } from "#app";
+import { useAuth } from "#imports";
 
 export default defineNuxtRouteMiddleware(async (to) => {
     const { status } = useAuth();
@@ -12,7 +13,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
     const route = router.resolve(config.public.auth.pages.signIn);
 
-    const redirect: RedirectEvent = {
+    const redirect = {
         route,
         target: config.public.auth.pages.signIn,
     };

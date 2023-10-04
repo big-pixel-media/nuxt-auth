@@ -2,7 +2,7 @@ import { EventHandlerRequest, H3Event, getRouterParam, createError, eventHandler
 import { defu } from "defu";
 
 import { getProviders, getSession, signIn, signOut, callback } from "../handlers";
-import { AuthHandlerConfig } from "../types";
+import { AuthHandlerConfig } from "../../types";
 
 import { handlerDefaults } from "../defaults";
 

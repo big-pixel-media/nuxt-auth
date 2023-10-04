@@ -28,18 +28,18 @@ export type CallbackResult = {
     url: string;
 };
 
-export interface CredentialsProvider {
+export type CredentialsProvider = {
     type: "credentials";
     name: string;
     authorize: (credentials: Credentials) => any;
-}
+};
 
-export interface OAuthProvider {
+export type OAuthProvider = {
     type: "oauth";
     name: string;
     authorize: OAuthAuthorizeHandler;
     callback: OAuthCallbackHandler;
-}
+};
 
 export type OAuthAuthorizeHandler = (
     event: H3Event<EventHandlerRequest>,
@@ -55,12 +55,12 @@ export type OAuthCallbackHandler = (
 
 export type Provider = OAuthProvider | CredentialsProvider;
 
-export interface AuthHandlerConfig {
+export type AuthHandlerConfig = {
     secret: string;
     providers: Provider[];
-    session?: SessionConfig;
-    cookie?: CookieConfig;
-}
+    session: SessionConfig;
+    cookie: CookieConfig;
+};
 
 export type SessionConfig = {
     maxAge: number;

@@ -1,4 +1,6 @@
 import { addRouteMiddleware, defineNuxtPlugin, useRuntimeConfig } from "#app";
+import { useAuth } from "#imports";
+
 import authMiddleware from "./middleware/auth";
 
 export default defineNuxtPlugin(async () => {

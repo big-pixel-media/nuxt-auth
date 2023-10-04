@@ -1,4 +1,4 @@
-import { NuxtApp, callWithNuxt } from "#app";
+import { NuxtApp, callWithNuxt, useRequestHeaders, useState, useNuxtApp, useRoute, useRouter } from "#app";
 import { AuthStatus, AuthorizeResult, Session } from "../../types";
 
 export type SignInOptions = {

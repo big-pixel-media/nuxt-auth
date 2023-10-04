@@ -1,5 +1,5 @@
 import { defu } from "defu";
-import { Credentials, CredentialsProvider, Session } from "../types";
+import { Credentials, CredentialsProvider, Session } from "../../types";
 
 export type CredentialsOptions = {
     name?: string;
