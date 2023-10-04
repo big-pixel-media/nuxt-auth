@@ -1,6 +1,6 @@
 {
   "name": "@big-pixel-media/nuxt-auth",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Auth Module for Nuxt3",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run lint && npm run prepack && changelogen --release && npm publish --tag beta && git push --follow-tags",
+    "release": "npm run lint && npm run prepack && changelogen --release && npm publish --access public --tag beta && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch"
