@@ -1,6 +1,6 @@
 {
   "name": "@big-pixel-media/nuxt-auth",
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1-beta.2",
   "description": "Auth Module for Nuxt3",
   "repository": {
     "type": "git",
