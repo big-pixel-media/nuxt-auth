@@ -1,4 +1,13 @@
-import { createResolver, defineNuxtModule, addImports, addPlugin, addTemplate, addRouteMiddleware } from "@nuxt/kit";
+import {
+    createResolver,
+    defineNuxtModule,
+    addImports,
+    addPlugin,
+    addTemplate,
+    addRouteMiddleware,
+    useLogger,
+} from "@nuxt/kit";
+
 import { defu } from "defu";
 
 import { moduleDefaults } from "./runtime/defaults";
@@ -9,6 +18,7 @@ export default defineNuxtModule({
         configKey: "auth",
     },
     async setup(options, nuxt) {
+        const logger = useLogger("nuxt-auth");
         const moduleOptions = defu(options, moduleDefaults);
 
         nuxt.options.runtimeConfig.auth = moduleOptions;
@@ -16,6 +26,8 @@ export default defineNuxtModule({
             global: moduleOptions.global,
             pages: moduleOptions.pages,
         };
+
+        logger.info(`🔒 Auth module starting`);
 
         const { resolve } = createResolver(import.meta.url);
 
