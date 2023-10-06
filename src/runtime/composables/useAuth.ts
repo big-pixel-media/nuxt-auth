@@ -70,7 +70,7 @@ export const useAuth = () => {
             return;
         }
 
-        console.log(`🔒 Authenticated with ${provider}`);
+        console.log(`🔒 Authenticated with '${provider}'`);
 
         const router = useRouter();
         const route = useRoute();

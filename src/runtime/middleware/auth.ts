@@ -1,10 +1,14 @@
-import { defineNuxtRouteMiddleware, useRouter, useNuxtApp, navigateTo } from "#app";
+import { defineNuxtRouteMiddleware, useRouter, useNuxtApp, navigateTo, useRuntimeConfig } from "#app";
 import { useAuth } from "#imports";
 
 export default defineNuxtRouteMiddleware(async (to) => {
     const { status } = useAuth();
 
     if (status.value === "authenticated") {
+        return;
+    }
+
+    if (to.meta.auth === false) {
         return;
     }
 
