@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v0.0.1-beta.6
+
+[compare changes](https://github.com/big-pixel-media/nuxt-auth/compare/v0.0.1-beta.5...v0.0.1-beta.6)
+
 ## v0.0.1-beta.5
 
 [compare changes](https://github.com/big-pixel-media/nuxt-auth/compare/v0.0.1-beta.4...v0.0.1-beta.5)
