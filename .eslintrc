@@ -2,6 +2,8 @@
     "root": true,
     "extends": ["@nuxt/eslint-config"],
     "rules": {
-        "vue/html-indent": "off"
+        "vue/html-indent": "off",
+        "vue/singleline-html-element-content-newline": "off",
+        "vue/no-multiple-template-root": "off"
     }
 }

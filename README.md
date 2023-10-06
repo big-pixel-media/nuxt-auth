@@ -14,7 +14,8 @@ Find and replace all on all files (CMD+SHIFT+F):
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-My new Nuxt module for doing amazing things.
+This is a nuxt-auth module for nuxt 3, currently early stages but open to contributions or fixes!
+Features are limited but development is very much active so let me know if there is anything that needs addressing.
 
 -   [✨ &nbsp;Release Notes](/CHANGELOG.md)
 
@@ -45,7 +46,7 @@ export default defineNuxtConfig({
 });
 ```
 
-That's it! You can now use My Module in your Nuxt app ✨
+That's it! You can now use nuxt-auth in your Nuxt app ✨
 
 ## Development
 

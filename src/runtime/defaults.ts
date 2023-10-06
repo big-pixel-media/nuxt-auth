@@ -1,6 +1,6 @@
-import { AuthModuleConfig, AuthHandlerConfig } from "../types";
+import { AuthHandlerConfig } from "../types";
 
-export const moduleDefaults: AuthModuleConfig = {
+export const moduleDefaults = {
     global: false,
     pages: {
         signIn: "/account/sign-in",

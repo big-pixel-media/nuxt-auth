@@ -90,7 +90,7 @@ export const OAuthProvider = (providerOptions: OAuthOptions): Provider => {
 
         deleteCookie(event, `${options.cookie.name}.return-url`);
 
-        sendRedirect(event, `${returnUrl || "/"}`, 302);
+        sendRedirect(event, `${returnUrl || "/"}`);
 
         return {
             url: `${returnUrl || "/"}`,

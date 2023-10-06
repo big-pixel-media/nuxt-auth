@@ -6,7 +6,7 @@ import { AuthHandlerConfig } from "../../types";
 
 import { handlerDefaults } from "../defaults";
 
-export const AuthHandler = (config: AuthHandlerConfig) => {
+export const AuthHandler = (config: Partial<AuthHandlerConfig>) => {
     const handlerConfig = defu(config, handlerDefaults);
 
     if (!handlerConfig.secret) {

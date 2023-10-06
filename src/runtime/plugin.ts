@@ -1,24 +1,22 @@
 import { addRouteMiddleware, defineNuxtPlugin, useRuntimeConfig } from "#app";
 import { useAuth } from "#imports";
+import { getHeader } from "h3";
 
 import authMiddleware from "./middleware/auth";
 
-export default defineNuxtPlugin(async () => {
+export default defineNuxtPlugin(async (nuxtApp) => {
     const config = useRuntimeConfig();
 
     const { getSession } = useAuth();
-    await getSession();
 
-    // the middleware is registered locally always so not
-    // to break pages that call :-
-    //   definePageMeta({ middleware: "auth" });
-    // downside being that the middleware is potentially
-    // run twice (globally, if enabled, then locally) so
-    // its upto the developer not to use it
-    // both locally and globally.
+    let nitroPrerender = false;
+    if (nuxtApp.ssrContext) {
+        nitroPrerender = getHeader(nuxtApp.ssrContext.event, "x-nitro-prerender") !== undefined;
+    }
 
-    // register the middleware locally
-    addRouteMiddleware("auth", authMiddleware);
+    if (!nitroPrerender) {
+        await getSession();
+    }
 
     // register the middleware globally if enabled
     if (config.public.auth.global) {

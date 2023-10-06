@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: "Inter", system-ui, sans-serif;
+        @apply h-full bg-zinc-950 text-white;
+    }
+
+    body {
+        @apply h-full;
+    }
+
+    #__nuxt {
+        @apply h-full;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply flex px-4 py-2.5 transition-colors font-semibold text-white;
+        @apply border border-zinc-900 rounded text-white;
+        @apply border-blue-900;
+        @apply hover:bg-zinc-900/50;
+        @apply shadow-[theme('colors.blue.900')_0px_0px_12px];
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        @apply flex px-4 py-2.5 transition-colors font-semibold text-white bg-zinc-900;
+        @apply border border-zinc-900 rounded text-white outline-none;
+        @apply border-zinc-800;
+        @apply hover:bg-zinc-900/50;
+    }
+}
