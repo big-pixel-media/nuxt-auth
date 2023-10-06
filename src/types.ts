@@ -1,12 +1,6 @@
 import { RouteLocationNormalized } from "vue-router";
 import { H3Event, EventHandlerRequest } from "h3";
 
-declare module "#app" {
-    interface RuntimeNuxtHooks {
-        "auth:redirect": (event: RedirectEvent) => Promise<void> | void;
-    }
-}
-
 export type AuthStatus = "authenticated" | "unauthenticated";
 
 export type Credentials = Record<string, any>;
@@ -71,12 +65,12 @@ export type CookieConfig = {
 };
 
 export type PagesConfig = {
-    signIn: string;
+    signIn?: string;
 };
 
 export type AuthModuleConfig = {
-    global: boolean;
-    pages: PagesConfig;
+    global?: boolean;
+    pages?: PagesConfig;
 };
 
 export type SignInRequest = {
@@ -88,3 +82,26 @@ export type RedirectEvent = {
     readonly route: RouteLocationNormalized;
     target: string;
 };
+
+type AuthPageMeta = {};
+
+declare module "#app" {
+    interface RuntimeNuxtHooks {
+        "auth:redirect": (event: RedirectEvent) => Promise<void> | void;
+    }
+}
+
+declare module "#app/../pages/runtime/composables" {
+    interface PageMeta {
+        auth?: AuthPageMeta | boolean;
+    }
+}
+
+declare module "nuxt/schema" {
+    interface NuxtConfig {
+        ["auth"]?: AuthModuleConfig;
+    }
+    /*interface PublicRuntimeConfig {
+        APP_ENV: 'development' | 'staging' | 'production'
+    }*/
+}

@@ -4,10 +4,12 @@ import { useAuth } from "#imports";
 export default defineNuxtRouteMiddleware(async (to) => {
     const { status } = useAuth();
 
+    // If the user is already authenticated then skip the middleware.
     if (status.value === "authenticated") {
         return;
     }
 
+    // If the page has explictly turned off auth then skip the middleware.
     if (to.meta.auth === false) {
         return;
     }
