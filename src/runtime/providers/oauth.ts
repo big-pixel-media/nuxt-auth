@@ -28,13 +28,15 @@ export const OAuthProvider = (providerOptions: OAuthOptions): Provider => {
     const authorize: OAuthAuthorizeHandler = (event, options, providerName) => {
         const { returnUrl } = getQuery(event) as AuthorizeParams;
 
-        const redirectUri = providerOptions.redirectUri || `/auth/${providerName}/callback`;
+        const origin = process.env.AUTH_ORIGIN || "";
+        const redirectUri = providerOptions.redirectUri || `${origin}/api/auth/callback/${providerName}`;
 
         const params = new URLSearchParams();
         params.append("response_type", "code");
         params.append("client_id", providerOptions.clientId);
         params.append("scope", providerOptions.scope);
         params.append("redirect_uri", redirectUri);
+        params.append("state", "test");
 
         // params.append("code_challenge_method", "S256");
         // params.append("code_challenge", "hKpKupTM391pE10xfQiorMxXarRKAHRhTfH_xkGf7U4");
@@ -60,7 +62,8 @@ export const OAuthProvider = (providerOptions: OAuthOptions): Provider => {
             });
         }
 
-        const redirectUri = providerOptions.redirectUri || `/auth/${providerName}/callback`;
+        const origin = process.env.AUTH_ORIGIN || "";
+        const redirectUri = providerOptions.redirectUri || `${origin}/api/auth/callback/${providerName}`;
 
         const params = new URLSearchParams();
         params.append("grant_type", "authorization_code");

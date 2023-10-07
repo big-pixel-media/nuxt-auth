@@ -12,6 +12,10 @@
             </div>
         </form>
     </div>
+    <div class="flex items-center justify-center gap-4">
+        <button type="button" @click="signIn('sorare')" class="btn">Sorare</button>
+        <button type="button" @click="signIn('facebook')" class="btn">Facebook</button>
+    </div>
     <div class="flex items-center">
         <div class="grid grid-cols-2 gap-2 mx-auto">
             <div class="text-gray-600">username</div>
@@ -20,7 +24,6 @@
             <div>test</div>
         </div>
     </div>
-    <button type="button" @click="signIn('sorare')" class="btn">Sorare</button>
 </template>
 <script setup lang="ts">
 import { ref, useAuth } from "#imports";
