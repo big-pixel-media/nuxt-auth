@@ -4,6 +4,7 @@ export const moduleDefaults = {
     global: false,
     pages: {
         signIn: "/account/sign-in",
+        signOut: "/",
     },
 };
 

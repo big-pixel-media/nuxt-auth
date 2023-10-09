@@ -66,6 +66,7 @@ export type CookieConfig = {
 
 export type PagesConfig = {
     signIn?: string;
+    signOut?: string;
 };
 
 export type AuthModuleConfig = {

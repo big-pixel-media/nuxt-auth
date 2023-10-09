@@ -20,8 +20,7 @@ const getRequestCookies = async (nuxt: NuxtApp): Promise<{ cookie: string } | {}
 export const useAuth = () => {
     const status = useState<AuthStatus | undefined>("auth-status", () => undefined);
 
-    // getSession makes a call to the backend to retrieve the session,
-    // passing along the auth cookie
+    // getSession makes a call to the backend to retrieve the session
     const getSession = async (): Promise<Session | null> => {
         const nuxt = useNuxtApp();
 
@@ -42,7 +41,7 @@ export const useAuth = () => {
     };
 
     // signIn makes a call to the backend to authenticate the user
-    // with the selected provider and credentials if any. The result
+    // with the selected provider and credentials. The result
     // from the backend includes an auth cookie if successful; the
     // local status is set to authenticated as well.
     const signIn = async (provider: string, options?: SignInOptions) => {
@@ -91,6 +90,8 @@ export const useAuth = () => {
     const signOut = async (options?: SignOutOptions) => {
         console.log(`🔒 Signing out`);
 
+        const nuxt = useNuxtApp();
+
         try {
             await $fetch(`/api/auth/session`, {
                 method: "DELETE",
@@ -104,7 +105,7 @@ export const useAuth = () => {
 
         status.value = "unauthenticated";
 
-        const returnUrl = options?.returnUrl || "/";
+        const returnUrl = options?.returnUrl || nuxt.$config.auth.pages.signOut || "/";
 
         const router = useRouter();
         router.push(returnUrl);
