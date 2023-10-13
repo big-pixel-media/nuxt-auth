@@ -102,7 +102,4 @@ declare module "nuxt/schema" {
     interface NuxtConfig {
         ["auth"]?: AuthModuleConfig;
     }
-    /*interface PublicRuntimeConfig {
-        APP_ENV: 'development' | 'staging' | 'production'
-    }*/
 }

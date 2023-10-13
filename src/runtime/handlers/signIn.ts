@@ -1,5 +1,5 @@
 import { H3Event, EventHandlerRequest, readBody, createError, setCookie } from "h3";
-import { AuthHandlerConfig, CredentialsProvider, SignInRequest } from "../../types";
+import { AuthHandlerConfig, Credentials, CredentialsProvider } from "../../types";
 import { encryptToken } from "../token";
 
 const credentials = async (
@@ -7,7 +7,7 @@ const credentials = async (
     options: AuthHandlerConfig,
     provider: CredentialsProvider
 ) => {
-    const body = (await readBody(event)) as SignInRequest;
+    const body = (await readBody(event)) as Credentials;
 
     const user = await provider.authorize(body);
     if (!user) {

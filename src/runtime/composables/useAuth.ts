@@ -44,7 +44,7 @@ export const useAuth = () => {
     // with the selected provider and credentials. The result
     // from the backend includes an auth cookie if successful; the
     // local status is set to authenticated as well.
-    const signIn = async (provider: string, options?: SignInOptions) => {
+    const signIn = async (provider: string, options?: SignInOptions): Promise<void> => {
         console.log(`🔒 Signing in with '${provider}'`);
 
         try {
@@ -63,26 +63,25 @@ export const useAuth = () => {
             }
 
             status.value = "authenticated";
+
+            console.log(`🔒 Authenticated with '${provider}'`);
+
+            const router = useRouter();
+            const route = useRoute();
+
+            // navigate to the return url if one is present in the query string
+            if (route.query.returnUrl && typeof route.query.returnUrl === "string") {
+                router.push(route.query.returnUrl);
+                return;
+            }
+
+            // navigate to the return url from the options
+            const returnUrl = options?.returnUrl || "/";
+            router.push(returnUrl);
         } catch (err) {
-            console.log(err);
             status.value = "unauthenticated";
-            return;
+            throw err;
         }
-
-        console.log(`🔒 Authenticated with '${provider}'`);
-
-        const router = useRouter();
-        const route = useRoute();
-
-        // navigate to the return url if one is present in the query string
-        if (route.query.returnUrl && typeof route.query.returnUrl === "string") {
-            router.push(route.query.returnUrl);
-            return;
-        }
-
-        // navigate to the return url from the options
-        const returnUrl = options?.returnUrl || "/";
-        router.push(returnUrl);
     };
 
     // signOut makes a call to the backend and removes the auth cookie
@@ -105,7 +104,7 @@ export const useAuth = () => {
 
         status.value = "unauthenticated";
 
-        const returnUrl = options?.returnUrl || nuxt.$config.auth.pages.signOut || "/";
+        const returnUrl = options?.returnUrl || nuxt.$config.auth?.pages?.signOut || "/";
 
         const router = useRouter();
         router.push(returnUrl);

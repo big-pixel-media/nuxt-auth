@@ -1,6 +1,9 @@
 <template>
     <div class="flex items-center justify-center space-y-4">
         <form autocomplete="off" @submit.prevent="submit()">
+            <div class="p-2 text-center text-red-600" v-if="errorMessage">
+                {{ errorMessage }}
+            </div>
             <div class="flex gap-4">
                 <div>
                     <input type="text" v-model="username" />
@@ -33,11 +36,19 @@ const { signIn } = useAuth();
 const username = ref("");
 const password = ref("");
 
+const errorMessage = ref<string>("");
+
 const submit = async () => {
-    await signIn("credentials", {
-        username: username.value,
-        password: password.value,
-        returnUrl: "/session",
-    });
+    try {
+        errorMessage.value = "";
+        await signIn("credentials", {
+            username: username.value,
+            password: password.value,
+            returnUrl: "/session",
+        });
+    } catch (err: any) {
+        errorMessage.value = "Invalid username or password";
+        console.log(JSON.stringify(err, null, 2));
+    }
 };
 </script>
