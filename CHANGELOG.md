@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.1-beta.7
+
+[compare changes](https://github.com/big-pixel-media/nuxt-auth/compare/v0.0.1-beta.5...v0.0.1-beta.7)
+
+### 🏡 Chore
+
+- **release:** V0.0.1-beta.6 ([9ee4059](https://github.com/big-pixel-media/nuxt-auth/commit/9ee4059))
+
+### ❤️ Contributors
+
+- Richard Adnams ([@ironfang-ltd](http://github.com/ironfang-ltd))
+
 ## v0.0.1-beta.6
 
 [compare changes](https://github.com/big-pixel-media/nuxt-auth/compare/v0.0.1-beta.5...v0.0.1-beta.6)
