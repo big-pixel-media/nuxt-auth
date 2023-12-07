@@ -3,6 +3,7 @@ import { AuthStatus, AuthorizeResult, Session } from "../../types";
 
 export type SignInOptions = {
     returnUrl?: string;
+    redirect: boolean;
 } & Record<string, any>;
 
 export type SignOutOptions = {
@@ -65,6 +66,10 @@ export const useAuth = () => {
             status.value = "authenticated";
 
             console.log(`🔒 Authenticated with '${provider}'`);
+
+            if (options?.redirect === false) {
+                return;
+            }
 
             const router = useRouter();
             const route = useRoute();
